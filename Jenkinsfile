@@ -6,14 +6,24 @@ pipeline {
 
   }
   stages {
-    stage('Paso1') {
+    stage('Paso 1') {
+      agent {
+        node {
+          label 'master'
+        }
+
+      }
       steps {
-        sh 'ls -al'
+        build 'Job1'
         catchError() {
-          sh 'env'
+          build 'Job 2'
         }
 
       }
     }
+  }
+  environment {
+    VAR1 = 'VALOR1'
+    VAR2 = 'VALOR2'
   }
 }
