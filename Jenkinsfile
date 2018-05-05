@@ -16,7 +16,7 @@ pipeline {
       steps {
         build 'Job1'
         catchError() {
-          build 'Job 2'
+          build 'Job2'
         }
 
       }
